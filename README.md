@@ -39,10 +39,11 @@ API to return specific movie by imdbID
 ### Get movies data
 
 API to return the following data:\
-totalLengthOfAllMovies - Use reduce to calculate the total length to watch all the movies. Format: string - ("xxx min")\
-imdbUrls - Array of strings which will contain the imdb url of each movie created using imdbID. example of imdb url: https://www.imdb.com/title/tt0076759/\
-totalImdbVotes: Total imdbVotes for all movies - Format: number - example: 12345678\
-allLanguagues: Array of strings containing ISO codes of all languages used in the movies.
+**totalLengthOfAllMovies** - Use reduce to calculate the total length to watch all the movies. Format: string - ("xxx min")\
+**imdbUrls** - Array of strings which will contain the imdb url of each movie created using imdbID.\
+example of imdb url: https://www.imdb.com/title/tt0076759/ \
+**totalImdbVotes**: Total imdbVotes for all movies - Format: number - example: 12345678\
+**allLanguagues**: Array of strings containing ISO codes of all languages used in the movies.
 
 ### Add new movie
 
