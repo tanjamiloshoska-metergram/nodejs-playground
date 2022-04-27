@@ -1,6 +1,6 @@
 # TASK
 
-## Clone the repository
+## Prerequisites
 
 Clone the repository and create your own branch named "name-surname".\
 Finish the tasks on that branch and push once you are finished.\
