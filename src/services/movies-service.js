@@ -1,7 +1,7 @@
 const fs = require("fs");
 const CodeError = require("../lib/custom-error");
 
-const path = "./movies.json"
+const path = "./movies.json";
 const data = fs.readFileSync(path);
 const movies = JSON.parse(data);
 

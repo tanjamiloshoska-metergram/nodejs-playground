@@ -1,6 +1,6 @@
 const movies = require("../services/movies-service");
 const { wrap } = require("../lib/error-handler");
-const movieSchema = require("../lib/authentication-schema");
+const { movieSchema } = require("../lib/authentication-schema");
 const CodeError = require("../lib/custom-error");
 
 const getAllMovies = wrap((req, res) => {
@@ -21,6 +21,9 @@ const getMoviesData = wrap((req, res) => {
 });
 
 const addMovie = (req, res) => {
+  const { error } = movieSchema.validate(req.body);
+  if (error) throw new CodeError(error.details[0].message, 400);
+
   movies.addMovie(req.body);
   return {
     status: "created",
@@ -30,6 +33,9 @@ const addMovie = (req, res) => {
 };
 
 const updateMovie = wrap((req, res) => {
+  const { error } = movieSchema.validate(req.body);
+  if (error) throw new CodeError(error.details[0].message, 400);
+
   const movie = movies.getMovieById(req.body.imbdID);
   if (movie) {
     movies.updateMovie(req.body);
