@@ -1,5 +1,4 @@
 const fs = require("fs");
-const CodeError = require("../lib/custom-error");
 
 const path = "./movies.json";
 const data = fs.readFileSync(path);
@@ -33,7 +32,8 @@ const getMovieByActor = (actor, newData) => {
 const sortMoviesByRating = (imdbSort, newData) => {
   if (imdbSort === "asc" || imdbSort === "ASC") {
     return newData.sort((a, b) => a.imdbRating - b.imdbRating);
-  } else if (imdbSort === "desc" || imdbSort === "DESC") {
+  }
+  if (imdbSort === "desc" || imdbSort === "DESC") {
     return newData.sort((a, b) => b.imdbRating - a.imdbRating);
   }
 };
@@ -93,21 +93,14 @@ const writeToJsonFile = (newData) => {
 };
 
 const addMovie = (movie) => {
-  const movieById = getMovieById(movie.imdbID);
-  if (movieById) throw new CodeError("Movie Already Exists", 400);
 
   movies.push(movie);
 
-  if (writeToJsonFile(movies)) {
-    return true;
-  }
-
-  throw new CodeError("Could Not Create Movie", 500);
+  return writeToJsonFile(movies);
 };
 
 const deleteMovie = (id) => {
   const movieIndex = movies.findIndex((movie) => movie.imdbID === id);
-  if (movieIndex === -1) throw new CodeError("Movie Not Found", 404);
 
   movies.splice(movieIndex, 1);
 
@@ -120,11 +113,7 @@ const updateMovie = (modifiedMovie) => {
   );
   movies[movieIndex] = modifiedMovie;
 
-  if (writeToJsonFile(movies)) {
-    return true;
-  }
-
-  throw new CodeError("Could Not Edit Movie", 500);
+  return writeToJsonFile(movies);
 };
 
 module.exports = {

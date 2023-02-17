@@ -1,6 +1,7 @@
 const joi = require("joi");
 
 const movieSchema = joi.object({
+  ComingSoon: joi.boolean(),
   Title: joi.string(),
     Year: joi.string(),
     Rated: joi.string(),
@@ -20,6 +21,7 @@ const movieSchema = joi.object({
     imdbVotes: joi.string(),
     imdbID: joi.string().required(),
     Type: joi.string(),
+    totalSeasons: joi.string(),
     Response: joi.string(),
     Images: joi.array(),
 });
